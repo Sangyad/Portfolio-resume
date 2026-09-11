@@ -1,0 +1,5 @@
+.hero { min-height: 100vh; }
+.content { display: grid; gap: 1rem; }
+.eyebrow { color: var(--color-primary); font-size: 0.875rem; font-weight: 600; }
+.heading { font-size: clamp(2.25rem, 7vw, 3rem); line-height: 1.05; letter-spacing: -0.025em; }
+.description { max-width: 42rem; line-height: 1.7; }

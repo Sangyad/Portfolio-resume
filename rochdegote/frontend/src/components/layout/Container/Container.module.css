@@ -1,0 +1,2 @@
+.container { width: min(100% - 3rem, 64rem); margin-inline: auto; }
+@media (min-width: 64rem) { .container { width: min(100% - 4rem, 64rem); } }
