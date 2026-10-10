@@ -1,3 +1,0 @@
-.section { padding-block: 4rem; }
-.muted { background: var(--color-muted); }
-@media (min-width: 40rem) { .section { padding-block: 6rem; } }

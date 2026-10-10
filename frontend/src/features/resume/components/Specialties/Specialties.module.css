@@ -1,0 +1,79 @@
+.section {
+  padding-block: var(--space-8);
+}
+
+.grid {
+  display: grid;
+  gap: var(--space-4);
+  grid-template-columns: repeat(auto-fit, minmax(min(100%, 17rem), 1fr));
+}
+
+.item {
+  padding: var(--space-4);
+  background: var(--color-surface);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-card);
+  opacity: 0;
+  transform: translateY(0.75rem);
+  transition:
+    opacity var(--duration-slow) var(--ease-entrance) var(--stagger, 0ms),
+    transform var(--duration-slow) var(--ease-entrance) var(--stagger, 0ms),
+    border-color var(--duration-fast) var(--ease-standard);
+}
+
+.item:hover {
+  border-color: var(--color-primary);
+}
+
+.revealed {
+  opacity: 1;
+  transform: none;
+}
+
+.itemHeader {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: var(--space-3);
+}
+
+.name {
+  font-size: var(--text-base);
+}
+
+.level {
+  color: var(--color-accent);
+  font-size: var(--text-sm);
+  font-variant-numeric: tabular-nums;
+}
+
+.track {
+  height: 0.375rem;
+  margin-top: var(--space-3);
+  background: var(--color-surface-raised);
+  border-radius: var(--radius-pill);
+  overflow: hidden;
+}
+
+.fill {
+  display: block;
+  width: var(--level);
+  height: 100%;
+  border-radius: inherit;
+  background: linear-gradient(90deg, var(--color-primary), var(--color-accent));
+  transform-origin: left;
+  animation: meter var(--duration-slow) var(--ease-entrance) var(--stagger, 0ms) both;
+}
+
+.note {
+  margin-top: var(--space-3);
+  color: var(--color-muted);
+  font-size: var(--text-sm);
+  line-height: var(--leading-normal);
+}
+
+@keyframes meter {
+  from {
+    transform: scaleX(0);
+  }
+}
