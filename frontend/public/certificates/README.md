@@ -9,6 +9,14 @@ All images are referenced by filename from
 | ----------------------------------------- | --------------------------------------------------------------------- |
 | `cisco-cybersecurity-defense-analyst.jpg` | Cybersecurity Defense Analyst Pathway Exam (Cisco Networking Academy) |
 | `certificate-participation.jpg`           | Certificate of Participation — Assumption College of Toledo BSIT      |
+| `rust-school-completion.jpg`              | Rust School — Certificate of Completion (H.E.R.DAO)                   |
+| `blockchain-fundamentals-web3.jpg`        | Blockchain Fundamentals workshop — Davao DeFi Community · ACD         |
+| `it-fest-2024-first-place.jpg`            | First Place — Programming Competition, IT Fest 2024 (ACD BSIT)        |
+| `openxai-base-mini-app-9th-place.jpg`     | OpenxAI x ACD Base Mini App Workshop & Competition — 9th place        |
+
+Source scans live in `~/Pictures/certs/Pictures`. `IMG_20260907_202103_865.jpg`
+and `Rocha.png` were dropped there as rotated/duplicate copies of certs already
+listed above.
 
 ## In progress — generated placeholders
 

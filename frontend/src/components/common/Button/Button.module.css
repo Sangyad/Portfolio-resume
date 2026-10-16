@@ -34,7 +34,7 @@
 }
 
 .primary:hover:not(:disabled) {
-  background: var(--color-accent);
+  opacity: 0.88;
 }
 
 .secondary {
@@ -44,8 +44,8 @@
 }
 
 .secondary:hover:not(:disabled) {
-  border-color: var(--color-primary);
-  color: var(--color-primary);
+  border-color: var(--color-border-strong);
+  color: var(--color-foreground);
 }
 
 .ghost {

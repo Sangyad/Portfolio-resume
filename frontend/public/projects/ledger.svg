@@ -1,0 +1,35 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 400" role="img" aria-label="Ledger dashboard placeholder">
+  <rect width="640" height="400" fill="#f4f5f7"/>
+  <rect x="0" y="0" width="640" height="44" fill="#14161a"/>
+  <circle cx="22" cy="22" r="4" fill="#6b7280"/>
+  <circle cx="38" cy="22" r="4" fill="#6b7280"/>
+  <circle cx="54" cy="22" r="4" fill="#6b7280"/>
+  <rect x="80" y="15" width="120" height="14" rx="4" fill="#2a2e35"/>
+
+  <rect x="28" y="68" width="176" height="304" rx="8" fill="#ffffff" stroke="#e6e8ec"/>
+  <rect x="48" y="88" width="86" height="10" rx="3" fill="#d4d7dd"/>
+  <rect x="48" y="116" width="136" height="8" rx="3" fill="#eceef1"/>
+  <rect x="48" y="136" width="120" height="8" rx="3" fill="#eceef1"/>
+  <rect x="48" y="156" width="130" height="8" rx="3" fill="#eceef1"/>
+  <rect x="48" y="176" width="104" height="8" rx="3" fill="#eceef1"/>
+
+  <rect x="224" y="68" width="388" height="120" rx="8" fill="#ffffff" stroke="#e6e8ec"/>
+  <rect x="244" y="88" width="92" height="10" rx="3" fill="#d4d7dd"/>
+  <rect x="244" y="118" width="150" height="26" rx="4" fill="#14161a"/>
+  <rect x="404" y="118" width="90" height="26" rx="4" fill="#eef1f4"/>
+
+  <rect x="224" y="204" width="388" height="168" rx="8" fill="#ffffff" stroke="#e6e8ec"/>
+  <rect x="244" y="224" width="110" height="10" rx="3" fill="#d4d7dd"/>
+  <g fill="#e6e8ec">
+    <rect x="248" y="266" width="26" height="12" rx="3"/>
+    <rect x="284" y="252" width="26" height="26" rx="3"/>
+    <rect x="320" y="276" width="26" height="2" rx="1"/>
+    <rect x="356" y="258" width="26" height="20" rx="3"/>
+    <rect x="392" y="268" width="26" height="10" rx="3"/>
+    <rect x="428" y="244" width="26" height="34" rx="3"/>
+    <rect x="464" y="262" width="26" height="16" rx="3"/>
+    <rect x="500" y="254" width="26" height="24" rx="3"/>
+    <rect x="536" y="270" width="26" height="8" rx="3"/>
+  </g>
+  <rect x="244" y="332" width="348" height="8" rx="3" fill="#eceef1"/>
+</svg>

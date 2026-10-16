@@ -4,7 +4,7 @@ export const THEME_TRANSITION_CLASS = 'theme-transition'
 
 export type Theme = 'dark' | 'light'
 
-export const DEFAULT_THEME: Theme = 'dark'
+export const DEFAULT_THEME: Theme = 'light'
 
 export function isTheme(value: unknown): value is Theme {
   return value === 'dark' || value === 'light'

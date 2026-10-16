@@ -1,0 +1,29 @@
+.section {
+  padding-block: var(--space-8);
+}
+
+/*
+ * Capped at two columns so cards keep a readable measure and the grid reads as
+ * pairs, matching the reference. Collapses to one column on narrow screens.
+ */
+.grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(min(100%, 22rem), 1fr));
+  gap: var(--space-5);
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.item {
+  display: flex;
+}
+
+.item > * {
+  width: 100%;
+}
+
+.empty {
+  color: var(--color-muted);
+  font-size: var(--text-sm);
+}

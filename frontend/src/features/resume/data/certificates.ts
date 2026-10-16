@@ -34,6 +34,70 @@ export const certificates: Certificate[] = [
       'Certificate of Participation presented to Renier John A. Rocha for the workshop-seminar From Idea to Deployment, issued by Assumption College of Toledo BSIT Program, 5 March 2026',
   },
   {
+    id: 'rust-school-completion',
+    title: 'Rust School — Certificate of Completion',
+    issuer: 'H.E.R.DAO',
+    issuedOn: '2026-08-21',
+    credentialId: 'HER-DAO-962',
+    credentialUrl: null,
+    summary:
+      'Completed the eight-week Rust School program, building real, production-minded projects across systems programming, Web3, and networking.',
+    skills: ['Rust', 'Systems programming', 'Web3', 'Networking'],
+    tags: ['rust', 'web3', 'backend', 'earned'],
+    status: 'earned',
+    image: '/certificates/rust-school-completion.jpg',
+    imageAlt:
+      'H.E.R.DAO certificate of completion awarded to Renier John A. Rocha for completing the eight-week Rust School program in systems programming, Web3, and networking, 23 June to 21 August 2026',
+  },
+  {
+    id: 'blockchain-fundamentals-web3',
+    title: 'Blockchain Fundamentals: Understanding the Technology Behind Web3',
+    issuer: 'Davao DeFi Community · Assumption College of Davao',
+    issuedOn: '2026-09-29',
+    credentialId: 'ACD-DEFI-994',
+    credentialUrl: null,
+    summary:
+      'Participated in the Blockchain Fundamentals workshop covering how the technology behind Web3 works, held in Davao City.',
+    skills: ['Blockchain', 'Web3', 'Fundamentals'],
+    tags: ['web3', 'blockchain', 'workshop', 'earned'],
+    status: 'earned',
+    image: '/certificates/blockchain-fundamentals-web3.jpg',
+    imageAlt:
+      'Certificate of participation awarded to Renier John A. Rocha by Davao DeFi Community and Assumption College of Davao for the Blockchain Fundamentals workshop on 29 September 2026',
+  },
+  {
+    id: 'it-fest-2024-first-place',
+    title: 'First Place — Programming Competition, IT Fest 2024',
+    issuer: 'Assumption College of Davao · BSIT Program',
+    issuedOn: '2024-10-15',
+    credentialId: 'ACD-ITFEST-2024-01',
+    credentialUrl: null,
+    summary:
+      'Won first place in the IT Fest 2024 programming competition with the theme "Navigating AI\'s Moral Landscape: Principled Student Today, Ethical Technocrats Tomorrow".',
+    skills: ['Programming', 'Algorithms', 'Competition'],
+    tags: ['development', 'competition', 'earned'],
+    status: 'earned',
+    image: '/certificates/it-fest-2024-first-place.jpg',
+    imageAlt:
+      'Assumption College of Davao certificate of recognition awarded to Renier John Rocha for winning first place in the IT Fest 2024 programming competition, 15 October 2024',
+  },
+  {
+    id: 'openxai-base-mini-app-9th',
+    title: 'OpenxAI x ACD Base Mini App — 9th Place',
+    issuer: 'OpenxAI · ACD Base · Davao DeFi Community',
+    issuedOn: '2025-12-05',
+    credentialId: 'OPENXAI-ACD-BASE-09',
+    credentialUrl: null,
+    summary:
+      'Placed ninth in the OpenxAI x ACD Base mini app workshop and competition with "Soap vs Germs", a hygiene-tracking web3 mini app.',
+    skills: ['Base', 'Web3', 'Mini apps', 'Front-end'],
+    tags: ['web3', 'competition', 'earned'],
+    status: 'earned',
+    image: '/certificates/openxai-base-mini-app-9th-place.jpg',
+    imageAlt:
+      'Award graphic for the OpenxAI x ACD Base mini app workshop and competition showing ninth place for the project Soap vs Germs',
+  },
+  {
     id: 'aws-saa',
     title: 'AWS Solutions Architect — Associate',
     issuer: 'Amazon Web Services',

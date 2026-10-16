@@ -1,31 +1,37 @@
 :root {
-  /* Color — dark terminal is the default theme */
-  --color-background: #0d1117;
-  --color-surface: #161b22;
-  --color-surface-raised: #1c2230;
-  --color-border: #2d3648;
-  --color-foreground: #c9d1d9;
-  --color-muted: #8b949e;
-  --color-primary: #58a6ff;
-  --color-primary-foreground: #0d1117;
-  --color-accent: #7ee787;
-  --color-violet: #d2a8ff;
-  --color-warning: #ffa657;
-  --color-danger: #ff7b72;
-  --color-overlay: rgb(1 4 9 / 0.72);
+  /* Color — light monochrome is the default theme */
+  --color-background: #fbfbfb;
+  --color-surface: #ffffff;
+  --color-surface-raised: #f4f5f7;
+  --color-border: #e6e8ec;
+  --color-border-strong: #d4d7dd;
+  --color-foreground: #14161a;
+  --color-muted: #6b7280;
+  --color-primary: #14161a;
+  --color-primary-foreground: #ffffff;
+  --color-accent: #0f766e;
+  --color-violet: #6d28d9;
+  --color-warning: #b45309;
+  --color-danger: #b91c1c;
+  --color-overlay: rgb(20 22 26 / 0.4);
+  --shadow-card: 0 1px 2px rgb(20 22 26 / 0.04);
+  --shadow-lift: 0 18px 40px -18px rgb(20 22 26 / 0.28);
 
   /* Typography */
+  --font-sans:
+    -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
   --font-mono:
     ui-monospace, SFMono-Regular, 'SF Mono', Menlo, Consolas, 'Liberation Mono', monospace;
   --text-xs: 0.75rem;
   --text-sm: 0.875rem;
   --text-base: 1rem;
-  --text-lg: 1.125rem;
-  --text-xl: clamp(1.25rem, 2.4vw, 1.5rem);
-  --text-2xl: clamp(1.75rem, 4vw, 2.25rem);
-  --text-3xl: clamp(2.25rem, 7vw, 3.5rem);
+  --text-lg: 1.0625rem;
+  --text-xl: clamp(1.125rem, 2vw, 1.3125rem);
+  --text-2xl: clamp(1.5rem, 3.4vw, 2rem);
+  --text-3xl: clamp(2rem, 6vw, 3.25rem);
   --leading-tight: 1.15;
-  --leading-normal: 1.65;
+  --leading-normal: 1.6;
+  --tracking-eyebrow: 0.14em;
 
   /* Space */
   --space-1: 0.25rem;
@@ -39,8 +45,8 @@
   --space-9: 6rem;
 
   /* Radius */
-  --radius-control: 0.5rem;
-  --radius-card: 0.75rem;
+  --radius-control: 0.625rem;
+  --radius-card: 0.875rem;
   --radius-pill: 999px;
 
   /* Motion */
@@ -52,24 +58,32 @@
 
   /* Layout */
   --header-height: 3.5rem;
-  color-scheme: dark;
+  --content-width: 62rem;
+  color-scheme: light;
 }
 
-:root[data-theme='light'] {
-  --color-background: #f6f8fa;
-  --color-surface: #ffffff;
-  --color-surface-raised: #f0f3f6;
-  --color-border: #d0d7de;
-  --color-foreground: #1f2328;
-  --color-muted: #59636e;
-  --color-primary: #0969da;
-  --color-primary-foreground: #ffffff;
-  --color-accent: #1a7f37;
-  --color-violet: #8250df;
-  --color-warning: #9a6700;
-  --color-danger: #cf222e;
-  --color-overlay: rgb(31 35 40 / 0.45);
-  color-scheme: light;
+/*
+ * The dark terminal palette. No longer the default, but a first-class
+ * alternate reached through the existing toggle rather than a legacy mode.
+ */
+:root[data-theme='dark'] {
+  --color-background: #0d1117;
+  --color-surface: #161b22;
+  --color-surface-raised: #1c2230;
+  --color-border: #2d3648;
+  --color-border-strong: #3d475c;
+  --color-foreground: #c9d1d9;
+  --color-muted: #8b949e;
+  --color-primary: #e6edf3;
+  --color-primary-foreground: #0d1117;
+  --color-accent: #7ee787;
+  --color-violet: #d2a8ff;
+  --color-warning: #ffa657;
+  --color-danger: #ff7b72;
+  --color-overlay: rgb(1 4 9 / 0.72);
+  --shadow-card: 0 1px 2px rgb(1 4 9 / 0.4);
+  --shadow-lift: 0 18px 40px -18px rgb(1 4 9 / 0.8);
+  color-scheme: dark;
 }
 
 /*

@@ -70,7 +70,11 @@ export function Certificates({
 
   return (
     <section id="certificates" aria-labelledby="certificates-heading" className={styles.section}>
-      <SectionHeading index="03" title="certificates" headingId="certificates-heading" />
+      <SectionHeading
+        eyebrow="05 / certificates"
+        title="Certificates"
+        headingId="certificates-heading"
+      />
 
       <FilterBar
         idPrefix="certificates"

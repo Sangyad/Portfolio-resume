@@ -30,7 +30,7 @@ export function Events({
 
   return (
     <section id="events" aria-labelledby="events-heading" className={styles.section}>
-      <SectionHeading index="04" title="events" headingId="events-heading" />
+      <SectionHeading eyebrow="08 / events" title="Events" headingId="events-heading" />
 
       <FilterBar
         idPrefix="events"

@@ -11,10 +11,11 @@
 
 ## Product Goals
 
-Present one engineer's career as a single, explorable page: specialties with
-proficiency meters, an experience timeline, a browsable certificate carousel, and
-the events that shaped the work. Dark terminal aesthetic by default, with a
-light theme for reading and printing-adjacent contexts.
+Present one engineer's career as a single, explorable page: a hero that states
+identity and stack, a featured build, specialties with proficiency meters, an
+experience timeline, a project grid, a browsable certificate carousel, education,
+a personal "outside the IDE" block, and the events that shaped the work. Light,
+monochrome, airy by default, with the dark terminal theme one toggle away.
 
 ## Users
 
@@ -25,20 +26,26 @@ light theme for reading and printing-adjacent contexts.
 ## Core Workflows
 
 1. Land and read identity, title, availability, and contact links
-2. Skim specialties as meters, expand any role for highlights and stack
-3. Browse certificates horizontally, scroll left/right with buttons or arrow keys
-4. Filter certificates and events by free-text query and tag chips
-5. Jump to any section via the sticky nav or the Ctrl/Cmd+K command palette
-6. Switch between dark and light themes; the choice persists across visits
+2. Read the featured build, then scan the project grid for shipped work
+3. Skim specialties as meters, expand any role for highlights and stack
+4. Browse certificates horizontally, scroll left/right with buttons or arrow keys
+5. Filter certificates and events by free-text query and tag chips
+6. Confirm education and read the personal "outside the IDE" block
+7. Jump to any section via the sticky nav or the Ctrl/Cmd+K command palette
+8. Switch between light and dark themes; the choice persists across visits
 
 ## Acceptance Criteria
 
-- All six sections render as landmarks reachable by keyboard
+- All ten sections render as landmarks reachable by keyboard
 - Proficiency meters expose `role="meter"` with correct `aria-valuenow`
 - Certificate carousel scrolls horizontally with working prev/next, arrow keys,
   and a disabled-when-at-edge state
 - Search and tag filters update both certificate and event lists, show a live
   result count, and render an empty state when nothing matches
+- Project status is carried by visible text, never by colour alone
+- The featured build is the first project marked shipped, or falls back to the
+  first project when none is shipped
+- The personal block falls back to a monogram when no photo is supplied
 - Theme toggle sets `data-theme`, persists to `localStorage`, and animates the
   colour crossfade
 - Every animation is suppressed under `prefers-reduced-motion: reduce`
@@ -70,6 +77,13 @@ light theme for reading and printing-adjacent contexts.
 - Theme crossfade uses a transient `.theme-transition` class on `<html>`, removed
   on the next animation frame so hover states never inherit a global transition
 - Certificate images are local files under `public/certificates/`, lazy-loaded
+- Light monochrome is the default theme; the dark terminal palette remains a
+  first-class alternate reached by the existing toggle, not a deprecated mode
+- Case studies, GitHub activity, and a chat widget were considered against a
+  reference design and deliberately excluded; projects are cards without
+  per-project routes, keeping multi-page routing out of scope
+- Section order is fixed: about · featured · specialties · experience · projects ·
+  certificates · education · personal · events · contact
 
 ## Approved Deviations
 - (none)

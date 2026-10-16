@@ -4,16 +4,18 @@ import { useScrollReveal } from '../../hooks/useScrollReveal'
 import { profile } from '../../data'
 import styles from './Hero.module.css'
 
+function initials(name: string): string {
+  return name
+    .split(/\s+/)
+    .filter(Boolean)
+    .slice(0, 2)
+    .map((part) => part[0]?.toUpperCase() ?? '')
+    .join('')
+}
+
 export function Hero() {
   const { ref, revealed } = useScrollReveal<HTMLDivElement>()
   const [imageFailed, setImageFailed] = useState(false)
-
-  const initials = profile.name
-    .split(' ')
-    .filter(Boolean)
-    .slice(0, 2)
-    .map((part) => part[0])
-    .join('')
 
   return (
     <section id="about" className={styles.hero} aria-labelledby="hero-name">
@@ -21,8 +23,12 @@ export function Hero() {
         <div ref={ref} className={[styles.content, revealed && styles.revealed].join(' ')}>
           <div className={styles.avatarFrame} data-has-image={!imageFailed}>
             {imageFailed ? (
-              <span className={styles.avatarFallback} role="img" aria-label="Profile placeholder">
-                <span aria-hidden="true">{initials || '~'}</span>
+              <span
+                className={styles.avatarFallback}
+                role="img"
+                aria-label={`${profile.name} monogram`}
+              >
+                <span aria-hidden="true">{initials(profile.name) || '~'}</span>
               </span>
             ) : (
               <img
@@ -36,20 +42,29 @@ export function Hero() {
                 onError={() => setImageFailed(true)}
               />
             )}
-            <span className={styles.avatarScan} aria-hidden="true" />
           </div>
 
           <div className={styles.body}>
-            <p className={styles.prompt}>
-              <span className={styles.path}>{profile.handle}</span>$
-              <span className={styles.cursor} aria-hidden="true" />
-            </p>
-
             <h1 id="hero-name" className={styles.name}>
               {profile.name}
             </h1>
-            <p className={styles.title}>{profile.title}</p>
+
+            <p className={styles.title}>
+              {profile.title}
+              <span className={styles.titleSuffix}> — {profile.titleSuffix}</span>
+            </p>
+
             <p className={styles.tagline}>{profile.tagline}</p>
+
+            {profile.stack.length > 0 ? (
+              <ul className={styles.stack} aria-label="Primary stack">
+                {profile.stack.map((item) => (
+                  <li key={item} className={styles.stackItem}>
+                    {item}
+                  </li>
+                ))}
+              </ul>
+            ) : null}
 
             <dl className={styles.meta}>
               <div className={styles.metaRow}>

@@ -23,12 +23,11 @@
 }
 
 .field:focus-within {
-  border-color: var(--color-primary);
+  border-color: var(--color-border-strong);
 }
 
 .prompt {
-  color: var(--color-accent);
-  font-weight: 700;
+  color: var(--color-muted);
 }
 
 .input {
@@ -83,7 +82,7 @@
 
 .tag:hover {
   color: var(--color-foreground);
-  border-color: var(--color-muted);
+  border-color: var(--color-border-strong);
 }
 
 .active {

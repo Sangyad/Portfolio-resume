@@ -1,10 +1,10 @@
 .container {
-  width: min(100% - 3rem, 72rem);
+  width: min(100% - 3rem, var(--content-width));
   margin-inline: auto;
 }
 
 @media (min-width: 64rem) {
   .container {
-    width: min(100% - 6rem, 72rem);
+    width: min(100% - 6rem, var(--content-width));
   }
 }

@@ -41,7 +41,7 @@
 }
 
 .card:hover {
-  border-color: var(--color-primary);
+  border-color: var(--color-border-strong);
   transform: translateY(-3px);
 }
 
@@ -73,7 +73,7 @@
 }
 
 .issuer {
-  color: var(--color-accent);
+  color: var(--color-muted);
   font-size: var(--text-xs);
   text-transform: uppercase;
   letter-spacing: 0.06em;
@@ -202,12 +202,12 @@
   width: 0.4rem;
   height: 0.4rem;
   border-radius: 50%;
-  background: var(--color-border);
+  background: var(--color-border-strong);
   transition: background-color var(--duration-fast) var(--ease-standard);
 }
 
 .dotActive {
-  background: var(--color-accent);
+  background: var(--color-foreground);
 }
 
 .empty {

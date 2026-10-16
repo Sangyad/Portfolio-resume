@@ -8,7 +8,11 @@ export function Specialties() {
 
   return (
     <section id="specialties" aria-labelledby="specialties-heading" className={styles.section}>
-      <SectionHeading index="01" title="specialties" headingId="specialties-heading" />
+      <SectionHeading
+        eyebrow="02 / specialties"
+        title="Specialties"
+        headingId="specialties-heading"
+      />
 
       <ul ref={ref} className={styles.grid}>
         {specialties.map((specialty, position) => (

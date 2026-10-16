@@ -8,9 +8,13 @@ import {
 } from '@/components/common/CommandPalette/CommandPalette'
 import { ThemeToggle } from '@/components/common/ThemeToggle/ThemeToggle'
 import { Hero } from '@/features/resume/components/Hero/Hero'
+import { FeaturedBuild } from '@/features/resume/components/FeaturedBuild/FeaturedBuild'
 import { Specialties } from '@/features/resume/components/Specialties/Specialties'
 import { Experience } from '@/features/resume/components/Experience/Experience'
+import { Projects } from '@/features/resume/components/Projects/Projects'
 import { Certificates } from '@/features/resume/components/Certificates/Certificates'
+import { EducationSection } from '@/features/resume/components/Education/Education'
+import { OutsideTheIDE } from '@/features/resume/components/OutsideTheIDE/OutsideTheIDE'
 import { Events } from '@/features/resume/components/Events/Events'
 import { Contact } from '@/features/resume/components/Contact/Contact'
 import { useScrollSpy } from '@/features/resume/hooks/useScrollSpy'
@@ -18,10 +22,14 @@ import { useFilter } from '@/features/resume/hooks/useFilter'
 import { useTheme } from '@/features/resume/hooks/useTheme'
 import {
   certificates,
+  education,
   events,
+  featuredProject,
   filterCertificates,
   filterEvents,
+  navSections,
   profile,
+  projects,
   sections,
   uniqueTags,
 } from '@/features/resume/data'
@@ -108,7 +116,7 @@ export function ResumePage() {
         activeId={activeId}
         onNavigate={navigateTo}
         onOpenPalette={() => setPaletteOpen(true)}
-        links={sections.map((section) => ({ label: section.label, href: `#${section.id}` }))}
+        links={navSections.map((section) => ({ label: section.label, href: `#${section.id}` }))}
         name={profile.name}
       >
         <ThemeToggle theme={theme} onToggle={toggleTheme} />
@@ -116,9 +124,13 @@ export function ResumePage() {
 
       <main>
         <Hero />
-        <Specialties />
-        <Experience />
+        <FeaturedBuild project={featuredProject} />
+
         <Container>
+          <Specialties />
+          <Experience />
+          <Projects items={projects} />
+
           <Certificates
             items={filteredCertificates}
             allTags={certificateTags}
@@ -129,6 +141,9 @@ export function ResumePage() {
             onTagChange={certificateFilter.setTag}
             onReset={certificateFilter.reset}
           />
+
+          <EducationSection items={education} />
+          <OutsideTheIDE profile={profile} />
 
           <Events
             items={filteredEvents}
@@ -141,6 +156,7 @@ export function ResumePage() {
             onReset={eventFilter.reset}
           />
         </Container>
+
         <Contact />
       </main>
 

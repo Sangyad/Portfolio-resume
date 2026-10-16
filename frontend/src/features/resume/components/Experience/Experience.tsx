@@ -10,7 +10,7 @@ export function Experience() {
 
   return (
     <section id="experience" aria-labelledby="experience-heading" className={styles.section}>
-      <SectionHeading index="02" title="experience" headingId="experience-heading" />
+      <SectionHeading eyebrow="03 / experience" title="Experience" headingId="experience-heading" />
 
       <ol ref={ref} className={styles.timeline}>
         {experience.map((role, position) => {

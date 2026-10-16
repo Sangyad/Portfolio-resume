@@ -1,0 +1,15 @@
+/*
+ * Shared content shell for sections that manage their own padding. Mirrors
+ * Container's measure so a section wrapped in a shell lines up with one wrapped
+ * in the Container component.
+ */
+.shell {
+  width: min(100% - 3rem, var(--content-width));
+  margin-inline: auto;
+}
+
+@media (min-width: 64rem) {
+  .shell {
+    width: min(100% - 6rem, var(--content-width));
+  }
+}

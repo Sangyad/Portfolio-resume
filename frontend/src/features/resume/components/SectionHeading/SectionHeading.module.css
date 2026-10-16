@@ -1,20 +1,35 @@
 .heading {
   display: flex;
-  align-items: baseline;
-  gap: var(--space-3);
+  flex-direction: column;
+  gap: var(--space-2);
   margin-bottom: var(--space-6);
-  padding-bottom: var(--space-3);
-  border-bottom: 1px solid var(--color-border);
 }
 
-.index {
-  color: var(--color-accent);
-  font-size: var(--text-sm);
+.eyebrow {
+  display: flex;
+  align-items: center;
+  gap: var(--space-2);
+  color: var(--color-muted);
+  font-size: var(--text-xs);
   font-weight: 600;
+  letter-spacing: var(--tracking-eyebrow);
+  text-transform: uppercase;
+}
+
+.rule {
+  width: 1.5rem;
+  height: 1px;
+  background: var(--color-border-strong);
 }
 
 .title {
   color: var(--color-foreground);
   font-size: var(--text-2xl);
   letter-spacing: -0.02em;
+}
+
+.lede {
+  max-width: 34rem;
+  color: var(--color-muted);
+  font-size: var(--text-base);
 }

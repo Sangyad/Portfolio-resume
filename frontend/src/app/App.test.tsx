@@ -13,27 +13,42 @@ test('renders the profile identity', () => {
   expect(
     screen.getByRole('heading', { level: 1, name: 'Renier John A. Rocha' })
   ).toBeInTheDocument()
-  expect(screen.getByText('Senior Full-Stack Engineer')).toBeInTheDocument()
+  const hero = document.getElementById('about') as HTMLElement
+  expect(within(hero).getByText('Full-Stack Engineer')).toBeInTheDocument()
+  expect(within(hero).getByText(/TypeScript · Postgres · Cloud/)).toBeInTheDocument()
 })
 
 test('exposes every resume section as a landmark', () => {
   render(<App />)
 
-  for (const id of ['about', 'specialties', 'experience', 'certificates', 'events', 'contact']) {
+  const ids = [
+    'about',
+    'featured',
+    'specialties',
+    'experience',
+    'projects',
+    'certificates',
+    'education',
+    'personal',
+    'events',
+    'contact',
+  ]
+
+  for (const id of ids) {
     expect(document.getElementById(id)).toBeInTheDocument()
   }
 })
 
-test('toggles the theme and persists the choice', async () => {
+test('defaults to the light theme and persists a switch to dark', async () => {
   const user = userEvent.setup()
   render(<App />)
 
-  const toggle = screen.getByRole('button', { name: /switch to light mode/i })
+  const toggle = screen.getByRole('button', { name: /switch to dark mode/i })
   await user.click(toggle)
 
-  expect(document.documentElement.getAttribute('data-theme')).toBe('light')
-  expect(window.localStorage.getItem('rochdegote:theme')).toBe('light')
-  expect(screen.getByRole('button', { name: /switch to dark mode/i })).toBeInTheDocument()
+  expect(document.documentElement.getAttribute('data-theme')).toBe('dark')
+  expect(window.localStorage.getItem('rochdegote:theme')).toBe('dark')
+  expect(screen.getByRole('button', { name: /switch to light mode/i })).toBeInTheDocument()
 })
 
 test('renders proficiency meters with accessible values', () => {
@@ -80,10 +95,55 @@ test('badges in-progress credentials so they never read as earned', () => {
 test('falls back to monogram initials when no profile photo exists', () => {
   render(<App />)
 
-  const avatar = screen.getByRole('img', { name: /Senior Full-Stack Engineer$/ })
+  const avatar = screen.getByRole('img', { name: /Full-Stack Engineer$/ })
   fireEvent.error(avatar)
 
-  expect(screen.getByRole('img', { name: 'Profile placeholder' })).toBeInTheDocument()
+  expect(screen.getByRole('img', { name: 'Renier John A. Rocha monogram' })).toBeInTheDocument()
+})
+
+test('spotlights the first shipped project in the featured build', () => {
+  render(<App />)
+
+  const featured = document.getElementById('featured') as HTMLElement
+  expect(
+    within(featured).getByRole('heading', { name: /^Ledger: a double-entry core/ })
+  ).toBeInTheDocument()
+  expect(within(featured).getByText('shipped')).toBeInTheDocument()
+})
+
+test('gives every project a visible text status, never colour alone', () => {
+  render(<App />)
+
+  const projects = document.getElementById('projects') as HTMLElement
+
+  // One shipped project, two in progress, one coming soon. Each status appears
+  // twice: as a badge on the media and as the footer label.
+  expect(within(projects).getAllByText('live')).toHaveLength(2)
+  expect(within(projects).getAllByText('in progress')).toHaveLength(4)
+  expect(within(projects).getAllByText('coming soon')).toHaveLength(2)
+
+  expect(within(projects).getByRole('heading', { name: 'Project untitled' })).toBeVisible()
+})
+
+test('renders education with its period and institution', () => {
+  render(<App />)
+
+  const education = document.getElementById('education') as HTMLElement
+  expect(
+    within(education).getByRole('heading', {
+      name: /Bachelor of Science in Information Technology/,
+    })
+  ).toBeVisible()
+  expect(within(education).getByText('2022 — 2027')).toBeVisible()
+  expect(within(education).getByText('Assumption College of Toledo')).toBeVisible()
+})
+
+test('falls back to a monogram in the personal block when no photo exists', () => {
+  render(<App />)
+
+  const personal = document.getElementById('personal') as HTMLElement
+  expect(within(personal).getByRole('img', { name: 'Personal photo placeholder' })).toBeVisible()
+  expect(within(personal).getByText('Photography')).toBeVisible()
 })
 
 test('filters certificates by text query and shows an empty state', async () => {
@@ -127,6 +187,20 @@ test('opens the command palette with the keyboard and navigates', async () => {
   const dialog = screen.getByRole('dialog', { name: 'Command palette' })
   expect(dialog).toBeInTheDocument()
   expect(within(dialog).getByRole('option', { name: /go to certificates/ })).toBeInTheDocument()
+  expect(within(dialog).getByRole('option', { name: /go to projects/ })).toBeInTheDocument()
+})
+
+test('promotes only the primary sections into the sticky nav', () => {
+  render(<App />)
+
+  const nav = screen.getByRole('navigation', { name: 'Resume sections' })
+
+  for (const label of ['projects', 'experience', 'events']) {
+    expect(within(nav).getByRole('link', { name: label })).toBeInTheDocument()
+  }
+
+  // Ten sections would wrap on narrow screens, so the rest stay out of the nav.
+  expect(within(nav).queryByRole('link', { name: 'education' })).toBeNull()
 })
 
 test('closes the command palette on Escape', async () => {
