@@ -1,0 +1,92 @@
+# CodeRabbit configuration
+# Docs: https://coderabbit.ai/docs/config-file
+#
+# Tuned to this repo's recorded conventions in CONTEXT.md and RULES.md so the
+# review reflects this project rather than generic advice.
+
+language: en
+
+# Only review paths this project actually owns.
+paths:
+  - 'frontend/src/**/*.{ts,tsx,css}'
+  - 'frontend/e2e/**/*.ts'
+
+# Skip generated and vendored output.
+ignore_paths:
+  - 'frontend/dist/**'
+  - 'frontend/test-results/**'
+  - 'frontend/playwright-report/**'
+  - '**/node_modules/**'
+  - 'frontend/public/**' # certificate and project images are binary assets
+
+# --- Review behaviour ---
+
+reviews:
+  profile: assertive # thorough; this is a small codebase
+  request_changes_workflow: false
+  # Findings become PR comments, never a blocking gate. An AI reviewer produces
+  # false positives, so it must not be able to fail a build — the existing
+  # lint/typecheck/test jobs stay the hard gates.
+  high_level_summary: true
+  review_title: 'CodeRabbit review'
+  auto_review: true
+  auto_incremental_review: true # only re-review what changed on subsequent pushes
+
+# --- What to walk past ---
+# This codebase keeps these deliberate; flagging them trains people to ignore
+# the reviewer.
+path_filters:
+  - '**/*.test.{ts,tsx}'
+  - '**/*.spec.ts'
+  - '**/*.module.css'
+
+# --- Scope the walkthrough to what this project cares about ---
+instructions: |
+  This is a React 19 + Vite + TypeScript frontend. There is no backend, no
+  router, and no runtime dependency beyond React itself.
+
+  Architecture rules, from RULES.md and CONTEXT.md:
+  - Styling is CSS Modules. Every component owns its own `.module.css` file.
+    No inline styles except CSS custom properties set via `style={... as
+    React.CSSProperties}` for stagger delays and meter levels.
+  - Zero runtime dependencies beyond React. Do not suggest adding one.
+  - Single scrolling page with anchor navigation. Multi-page routing is
+    explicitly out of scope.
+  - All content is editable from `src/features/resume/data/` without touching
+    components. Never hardcode user-facing copy in a component.
+  - Strict TypeScript: no `any`, prefer `type` over `interface`.
+
+  Accessibility requirements, from the acceptance criteria:
+  - Every section is a landmark with `aria-labelledby` pointing at its heading.
+  - Proficiency meters expose `role="meter"` with a correct `aria-valuenow`.
+  - Project and credential status must be carried by visible text, never by
+    colour alone. Treat a colour-only status indicator as a real defect.
+  - Every interactive element needs a keyboard path and a visible focus ring.
+  - Images need meaningful `alt` text; decorative ones need `alt=""`.
+  - Respect `prefers-reduced-motion: reduce` for every animation.
+
+  Security constraints:
+  - This is a static SPA. Never commit secrets, tokens, or keys.
+  - Browser code and any `PUBLIC_`-prefixed env value is user-visible.
+
+  Validation that must pass before merge:
+  `npm run format:check && npm run lint && npm run typecheck && npm test`,
+  plus `npm run build` and `npm run test:e2e` when behaviour changes.
+
+  Please do not suggest adding a GitHub Activity, GitHub heatmap, or chat
+  widget. Those were evaluated and deliberately excluded from scope.
+
+# --- Severity filters ---
+# Ignore findings that do not matter for a personal portfolio site.
+severity: medium
+
+# --- Path-specific instructions ---
+path_instructions:
+  - path: 'frontend/src/features/resume/data/**/*.ts'
+    instructions: |
+      Data files are the single source of truth for all page content. Flag any
+      placeholder content that looks like it was left unfilled.
+  - path: 'frontend/src/features/resume/components/**/*.tsx'
+    instructions: |
+      Sections must render an empty state when their data array is empty,
+      rather than a broken or blank layout.
